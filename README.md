@@ -10,6 +10,7 @@ Kubernetes 없이 최소 비용으로 안정적인 서비스 운영하기
 ## 3. 초기 인프라 구조
 <img width="605" height="826" alt="image" src="https://github.com/user-attachments/assets/f0f40e07-5c2a-4941-8b92-f2297311c815" />
 초기 비용을 최소화하기 위해 단일 AZ의 Public Subnet에 단일 ec2 인스턴스를 배치하고, Docker 기반 애플리케이션만 실행하는 최소 인프라 구조입니다.
+
 ## 4. 인프라 발전 과정
 ### Phase 1. EC2 + Docker
 ### Phase 2. CloudWatch
