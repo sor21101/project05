@@ -1,0 +1,45 @@
+variable "project_name" {
+  description = "Project name"
+  type        = string
+  default     = "project05"
+}
+
+variable "aws_region" {
+  description = "AWS Region"
+  type        = string
+  default     = "ap-northeast-2"
+}
+
+variable "avaliability_zone" {
+  description = "Avaliability Zone"
+  type        = string
+  default     = "ap-northeast-2a"
+}
+
+variable "vpc_cidr" {
+  description = "VPC CIDR block"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
+variable "public_subnet_cidr" {
+  description = "Public subnet CIDR block"
+  type        = string
+  default     = "10.0.1.0/24"
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "key_name" {
+  description = "EC2 Key Pair Name"
+  type        = string
+}
+
+variable "ssh_cidr" {
+  description = "CIDR allowed to access SSH"
+  type        = string
+}
