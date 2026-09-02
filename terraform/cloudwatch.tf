@@ -1,4 +1,5 @@
 # CPU 사용률 80% 이상
+/*
 resource "aws_cloudwatch_metric_alarm" "high_cpu" {
   alarm_name        = "${var.project_name}-high-cpu"
   alarm_description = "CPU usage is over 80%"
@@ -61,4 +62,4 @@ resource "aws_cloudwatch_metric_alarm" "high_disk" {
   }
 
   treat_missing_data = "notBreaching"
-}
+}*/

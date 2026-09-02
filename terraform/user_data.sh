@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 apt-get update -y
 
-apt-get -o DRkg::Lock::Timeout=300 install -y docker.io wget
+apt-get -o DPkg::Lock::Timeout=300 install -y docker.io wget
 
 systemctl enable docker
 systemctl start docker
