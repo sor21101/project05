@@ -27,6 +27,8 @@ resource "aws_instance" "app" {
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.ec2.id]
 
+  iam_instance_profile = aws_iam_instance_profile.cloudwatch_agent.name
+
   key_name = var.key_name
 
   user_data = file("${path.module}/user_data.sh")

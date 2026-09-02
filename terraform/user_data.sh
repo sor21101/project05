@@ -2,9 +2,11 @@
 
 set -e
 
+export DEBIAN_FRONTEND=noninteractive
+
 apt-get update -y
 
-apt-get install -y docker.io
+apt-get -o DRkg::Lock::Timeout=300 install -y docker.io wget
 
 systemctl enable docker
 systemctl start docker
@@ -16,3 +18,11 @@ docker run -d \
     --restart unless-stopped \
     -p 80:80 \
     nginx:alpine
+
+cd /tmp
+
+wget https://amazoncloudwatch-agent.s3.amazonaws.com/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+
+dpkg -i -E ./amazon-cloudwatch-agent.deb
+
+rm -f amazon-cloudwatch-agent.deb
