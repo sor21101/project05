@@ -7,3 +7,5 @@ instance_type = "t3.micro"
 key_name = "project05-key"
 
 ssh_cidr = "123.123.123.123/32
+
+db_password = "pwd"

@@ -43,3 +43,27 @@ variable "ssh_cidr" {
   description = "CIDR allowed to access SSH"
   type        = string
 }
+
+variable "aws_db_instance_class" {
+  description = "RDS instance class"
+  type        = string
+  default     = "db.t4g.micro"
+}
+
+variable "db_name" {
+  description = "Initial PostgreSQL database name"
+  type        = string
+  default     = "appdb"
+}
+
+variable "db_username" {
+  description = "PostgreSQL master username"
+  type        = string
+  default     = "entks"
+}
+
+variable "db_password" {
+  description = "PostgreSQL master password"
+  type        = string
+  sensitive   = true
+}

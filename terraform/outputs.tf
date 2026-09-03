@@ -28,3 +28,18 @@ output "autoscaling_group_name" {
   description = "Auto Scaling Group Name"
   value       = aws_autoscaling_group.app.name
 }
+
+output "red_endpoint" {
+  description = "PostgreSQL RDS endpoint"
+  value       = aws_db_instance.postgres.address
+}
+
+output "rds_port" {
+  description = "PostgreSQL RDS port"
+  value       = aws_db_instance.postgres.port
+}
+
+output "rds_database_name" {
+  description = "PostgreSQL database name"
+  value       = aws_db_instance.postgres.db_name
+}
