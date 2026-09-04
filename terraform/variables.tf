@@ -67,3 +67,19 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "github_owner" {
+  description = "Github repository owner"
+  type        = string
+}
+
+variable "github_repo" {
+  description = "Github repository name"
+  type        = string
+}
+
+variable "github_branch" {
+  description = "Github branch allowed to deploy"
+  type        = string
+  default     = "main"
+}

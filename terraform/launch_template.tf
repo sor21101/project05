@@ -13,7 +13,10 @@ resource "aws_launch_template" "app" {
   }
 
   user_data = base64encode(
-    file("${path.module}/user_data.sh")
+    templatefile("${path.module}/user_data.sh", {
+      aws_region         = var.aws_region
+      ecr_repository_url = aws_ecr_repository.app.repository_url
+    })
   )
 
   metadata_options {

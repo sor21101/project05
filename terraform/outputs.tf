@@ -29,7 +29,7 @@ output "autoscaling_group_name" {
   value       = aws_autoscaling_group.app.name
 }
 
-output "red_endpoint" {
+output "rds_endpoint" {
   description = "PostgreSQL RDS endpoint"
   value       = aws_db_instance.postgres.address
 }
@@ -42,4 +42,14 @@ output "rds_port" {
 output "rds_database_name" {
   description = "PostgreSQL database name"
   value       = aws_db_instance.postgres.db_name
+}
+
+output "ecr_repository_url" {
+  description = "ECR repository URL"
+  value       = aws_ecr_repository.app.repository_url
+}
+
+output "github_actions_role_arn" {
+  description = "IAM Role ARN for Github Actions"
+  value       = aws_iam_role.github_actions.arn
 }
