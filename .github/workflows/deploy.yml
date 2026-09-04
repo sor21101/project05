@@ -41,9 +41,9 @@ jobs:
               Buffer.from(token.split('.')[1], 'base64url').toString()
             )
 
-            console.log('sub=${payload.sub}')
-            console.log('aud=${payload.aud}')
-            
+            console.log(`sub=${payload.sub}`)
+            console.log(`aud=${payload.aud}`)
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
