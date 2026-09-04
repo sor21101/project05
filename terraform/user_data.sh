@@ -6,6 +6,8 @@ export DEBIAN_FRONTEND=noninteractive
 
 AWS_REGION="${aws_region}"
 ECR_REPOSITORY_URL="${ecr_repository_url}"
+CLOUDWATCH_CONFIG_PARAMETER="${cloudwatch_config_parameter}"
+
 ECR_REGISTRY=$(echo "$ECR_REPOSITORY_URL" | cut -d/ -f1)
 IMAGE_URI="$ECR_REPOSITORY_URL:latest"
 
@@ -14,12 +16,24 @@ apt-get update -y
 apt-get -o DPkg::Lock::Timeout=300 install -y \
   docker.io \
   wget \
-  awscli
+  curl \
+  unzip
 
 systemctl enable docker
 systemctl start docker
 
 usermod -aG docker ubuntu
+
+cd /tmp
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
+  -o "awscliv2.zip"
+
+unzip -q awscliv2.zip
+
+./aws/install --update
+
+rm -rf aws awscliv2.zip
 
 # ECR 이미지가 이미 존재하면 최신 애플리케이션 실행
 if aws ecr get-login-password --region "$AWS_REGION" \
@@ -47,8 +61,15 @@ fi
 
 cd /tmp
 
-wget https://amazoncloudwatch-agent.s3.amazonaws.com/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+wget \
+  https://amazoncloudwatch-agent.s3.amazonaws.com/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
 
 dpkg -i -E ./amazon-cloudwatch-agent.deb
 
 rm -f amazon-cloudwatch-agent.deb
+
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -a fetch-config \
+  -m ec2 \
+  -s \
+  -c "ssm:$CLOUDWATCH_CONFIG_PARAMETER"

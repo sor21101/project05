@@ -14,8 +14,9 @@ resource "aws_launch_template" "app" {
 
   user_data = base64encode(
     templatefile("${path.module}/user_data.sh", {
-      aws_region         = var.aws_region
-      ecr_repository_url = aws_ecr_repository.app.repository_url
+      aws_region                  = var.aws_region
+      ecr_repository_url          = aws_ecr_repository.app.repository_url
+      cloudwatch_config_parameter = aws_ssm_parameter.cloudwatch_agent_config.name
     })
   )
 

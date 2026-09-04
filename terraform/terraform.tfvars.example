@@ -8,4 +8,12 @@ key_name = "project05-key"
 
 ssh_cidr = "123.123.123.123/32
 
-db_password = "pwd"
+db_password = "8자"
+
+github_owner    = "sor21101"
+github_owner_id = "269603658"
+
+github_branch = "main"
+
+github_repo    = "project05"
+github_repo_id = "1351545795"

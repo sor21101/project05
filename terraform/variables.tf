@@ -83,3 +83,11 @@ variable "github_branch" {
   type        = string
   default     = "main"
 }
+
+variable "github_owner_id" {
+  type = string
+}
+
+variable "github_repo_id" {
+  type = string
+}
